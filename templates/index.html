@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Recipe Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Gordbot</h1>
+        <form action="/get_recipe" method="post" class="mt-3">
+            <div class="form-group">
+                <label for="ingredients">Enter the ingredients you have (comma-separated):</label>
+                <input type="text" class="form-control" id="ingredients" name="ingredients" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Recipe</button>
+        </form>
+        <div class="mt-5">
+            {% if result %}
+                <div class="card">
+                    <div class="card-body">
+                        <div id="reciepe">{{ result }}</div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.getElementById('reciepe').innerHTML =
+            marked.parse(document.getElementById('reciepe').innerHTML);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
